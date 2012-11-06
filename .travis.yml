@@ -1,14 +1,18 @@
 language: ruby
 rvm: '1.9.3'
 
-before_install:
- - gem install mysql2
- - gem install pg
+#before_install:
+# - gem install mysql2
+# - gem install pg
 
 before_script:
  - mysql -e 'SHOW GRANTS'
  - mysql -e 'SHOW DATABASES'
- - psql -c '\du+'
- - psql -c '\l+'
+ - createdb 'cbandy'
+ - psql -c '\l+' -U postgres
+ - psql -c '\du+' -U postgres
 
 script: ./script.rb
+
+after_script:
+ - dropdb 'cbandy'
