@@ -8,7 +8,7 @@ before_install:
 before_script:
  - mysql -e 'SHOW GRANTS'
  - mysql -e 'SHOW DATABASES'
- - psql -c '\du+' -U postgres
- - psql -c '\l+' -U postgres
+ - psql -c '\du+'
+ - psql -c '\l+'
 
 script: ./script.rb
