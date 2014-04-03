@@ -1,18 +1,12 @@
 language: ruby
 rvm: '1.9.3'
 
-#before_install:
-# - gem install mysql2
-# - gem install pg
+matrix:
+  include:
+    - rvm: 1.9.3
+      env: ICU_VERSION=4.2.1
 
-before_script:
- - mysql -e 'SHOW GRANTS'
- - mysql -e 'SHOW DATABASES'
- - createdb 'cbandy'
- - psql -c '\l+' -U postgres
- - psql -c '\du+' -U postgres
+before_install:
+  - echo 'BEFORE INSTALL'
 
 script: ./script.rb
-
-after_script:
- - dropdb 'cbandy'
