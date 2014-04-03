@@ -7,6 +7,6 @@ matrix:
       env: ICU_VERSION=4.2.1
 
 before_install:
-  - echo 'BEFORE INSTALL'
+  - test -z "$ICU_VERSION" || cd dir
 
 script: ./script.rb
